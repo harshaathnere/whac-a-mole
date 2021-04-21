@@ -15,14 +15,16 @@ function randomSquare(){
     let randomPosition = squares[Math.floor(Math.random() *9)];
     //console.log(randomPosition) ;
     randomPosition.classList.add('mole')
-    hitPosition = randomSquare.id
-    console.log(hitPosition)
+    hitPosition = randomPosition.id
+    console.log('hit positoon',hitPosition)
 }
 
 squares.forEach(square => {
-    square.addEventListener('mousedown' ,()=>{
+    square.addEventListener('click' ,()=>{
         if(square.id == hitPosition){
             result++
+            console.log("result---->",result);
+            score.innerHTML = result
             score.textContent = result
             hitPosition = null
         }
@@ -31,7 +33,7 @@ squares.forEach(square => {
 
 function moveMole(){
    
-    timeId = setInterval(randomSquare, 500)
+    timeId = setInterval(randomSquare, 1000)
 }
 moveMole();
 function countDown(){
@@ -40,7 +42,7 @@ timeLeft.textContent = currentTime
 if(currentTime ==0){
     clearInterval(countDownTimerId);
     clearInterval(timeId);
-    alert('Game Over!! final score is' + result)
+    alert('Game Over2!! final score is' + result)
 }
 }
 let countDownTimerId = setInterval(countDown,1000)
